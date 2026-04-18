@@ -28,6 +28,27 @@ public sealed class Election : Entity, IAggregateRoot
         return election;
     }
 
+    public void Schedule(DateTime opensAt, DateTime closesAt)
+    {
+        if (Status != ElectionStatus.Pending)
+            throw new InvalidOperationException("Election must have at least two candidates before it can be scheduled.");
+
+        if (closesAt <= opensAt)
+            throw new InvalidOperationException("ClosesAt must be after OpensAt.");
+
+        OpensAt = opensAt;
+        ClosesAt = closesAt;
+        Status = ElectionStatus.Scheduled;
+    }
+
+    public void Open()
+    {
+        if (Status != ElectionStatus.Scheduled)
+            throw new InvalidOperationException("Only scheduled elections can be opened.");
+
+        Status = ElectionStatus.Ongoing;
+    }
+
     public void AddCandidate(Candidate candidate)
     {
         if (Status != ElectionStatus.Draft && Status != ElectionStatus.Pending)
