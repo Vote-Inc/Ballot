@@ -12,13 +12,12 @@ public sealed class Election : Entity, IAggregateRoot
     public DateTime? ClosesAt { get; private set; }
     public bool IsActive => Status is ElectionStatus.Scheduled or ElectionStatus.Ongoing;
     public IReadOnlyList<Candidate> Candidates => _candidates.AsReadOnly();
-    public int ValidVoters { get; private set; }
-    public string? AuditHash { get; private set; }
-
+    
     public static Election Create(Slug slug, ElectionTitle title, string? description)
     {
         var election = new Election
         {
+            Id = Guid.NewGuid(),
             Slug = slug,
             Title = title,
             Description = description,
@@ -63,19 +62,4 @@ public sealed class Election : Entity, IAggregateRoot
         Status = ElectionStatus.Pending;
     }
 
-    public void RemoveCandidate(Guid candidateId)
-    {
-        if (Status != ElectionStatus.Draft && Status != ElectionStatus.Pending)
-            throw new InvalidOperationException("Candidates can only be removed before an election is scheduled.");
-
-        var candidate = _candidates.FirstOrDefault(c => c.Id == candidateId);
-        if (candidate is null)
-            return;
-
-        _candidates.Remove(candidate);
-
-        if (_candidates.Count >= 2 || Status != ElectionStatus.Pending) return;
-        
-        Status = ElectionStatus.Draft;
-    }
 }

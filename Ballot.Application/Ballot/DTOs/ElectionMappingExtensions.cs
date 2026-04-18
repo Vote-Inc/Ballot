@@ -15,6 +15,7 @@ public static class ElectionMappingExtensions
         new(
             ElectionId: election.Id,
             Title: election.Title.Value,
+            Description: election.Description,
             Status: election.Status.ToString(),
             Candidates: election.Candidates.Select(c => c.ToDto()).ToList(),
             OpensAt: election.OpensAt,

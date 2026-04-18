@@ -23,7 +23,8 @@ public sealed class ElectionStore
             var title = ElectionTitle.Create(titleText);
             var election = Election.Create(slug, title, faker.Lorem.Sentence());
 
-            for (var i = 0; i < 4; i++)
+            var candidateCount = faker.Random.Int(2, 6);
+            for (var i = 0; i < candidateCount; i++)
             {
                 var forename = Name.Create(faker.Name.FirstName());
                 var surname = Name.Create(faker.Name.LastName());
@@ -42,17 +43,19 @@ public sealed class ElectionStore
 
                 election.AddCandidate(candidate);
             }
+            
+            elections.Add(election);
+        }
 
+        foreach (var election in elections)
+        {
             var opensAt = faker.Date.Recent(days: 5);
             var closesAt = faker.Date.Soon(days: 14);
             election.Schedule(opensAt, closesAt);
 
-            if (faker.Random.Bool())
-                election.Open();
-
-            elections.Add(election);
+            election.Open();
         }
-
+        
         return elections;
     }
 }

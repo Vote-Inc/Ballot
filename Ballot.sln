@@ -6,6 +6,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ballot.Infrastructure", "Ba
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ballot.Application", "Ballot.Application\Ballot.Application.csproj", "{E5668302-CA9F-47CE-91CD-CD86AF4C0094}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ballot.API", "Ballot.API\Ballot.API.csproj", "{E0AB332B-FBFD-4B8E-86B5-283B228B12EF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +26,9 @@ Global
 		{E5668302-CA9F-47CE-91CD-CD86AF4C0094}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E5668302-CA9F-47CE-91CD-CD86AF4C0094}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E5668302-CA9F-47CE-91CD-CD86AF4C0094}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E0AB332B-FBFD-4B8E-86B5-283B228B12EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E0AB332B-FBFD-4B8E-86B5-283B228B12EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E0AB332B-FBFD-4B8E-86B5-283B228B12EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E0AB332B-FBFD-4B8E-86B5-283B228B12EF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

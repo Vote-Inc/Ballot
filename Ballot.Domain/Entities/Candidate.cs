@@ -26,6 +26,7 @@ public sealed class Candidate : Entity
     {
         return new Candidate
         {
+            Id = Guid.NewGuid(),
             ElectionId = electionId,
             Forename = forename,
             Surname = surname,
