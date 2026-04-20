@@ -1,0 +1,9 @@
+global using Ballot.API.Extensions;
+global using Ballot.Application;
+global using Ballot.Application.Ballot.Errors;
+global using Ballot.Application.Ballot.Queries.GetActiveElectionsQuery;
+global using Ballot.Application.Ballot.Queries.GetElectionQuery;
+global using Ballot.Domain.Seedwork;
+global using Ballot.Infrastructure;
+global using MediatR;
+global using Microsoft.AspNetCore.Mvc;
