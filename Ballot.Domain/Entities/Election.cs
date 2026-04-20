@@ -4,8 +4,8 @@ public sealed class Election : Entity, IAggregateRoot
 {
     private readonly List<Candidate> _candidates = [];
 
-    public Slug Slug { get; private set; }
-    public ElectionTitle Title { get; private set; }
+    public Slug Slug { get; private set; } = null!;
+    public ElectionTitle Title { get; private set; } = null!;
     public string? Description { get; private set; }
     public ElectionStatus Status { get; private set; }
     public DateTime? OpensAt { get; private set; }
